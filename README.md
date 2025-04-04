@@ -1,36 +1,31 @@
-## Application Details
-|               |
-| ------------- |
-|**Generation Date and Time**<br>Thu Mar 13 2025 16:32:37 GMT+0100 (Central European Standard Time)|
-|**App Generator**<br>@sap/generator-fiori-freestyle|
-|**App Generator Version**<br>1.16.3|
-|**Generation Platform**<br>Visual Studio Code|
-|**Template Used**<br>simple|
-|**Service Type**<br>None|
-|**Service URL**<br>N/A|
-|**Module Name**<br>sap-aem-demo|
-|**Application Title**<br>SAP AEM Test App|
-|**Namespace**<br>com.sap.aem|
-|**UI5 Theme**<br>sap_horizon|
-|**UI5 Version**<br>1.133.0|
-|**Enable Code Assist Libraries**<br>False|
-|**Enable TypeScript**<br>True|
-|**Add Eslint configuration**<br>False|
+# Solace: Advanced messaging pattern using Request-Reply pattern
+This weather app developed using SAPUI5 application demonstrates the request-reply messaging pattern in Solace. Both guranteed and direct messaging is implemented.
 
-## sap-aem-demo
+### How to run
+Clone the repository:
+`git clone https://github.com/deepankar-bhowmick/sap-aem-request-reply.git`
 
-SAP AEM Test App
+Install dependencies:
+`npm install -all`
 
-### Starting the generated app
+### Configure Solace event broker in SAPUI5:
+This can be done in the `solace.ts` file:
+- `url`: Solace broker URL in WSS protocol.
+- `userName`: Solace client username.
+- `passWord`: Password of the Solace client username.
+- `hereMapAPIKey`: API key from Here-Map. Note, the app can also run without HereMap subscription.
+- `weatherQueueName`: Solace queue name which will return the weather details.
+- `coordinateQueueName`: Solace queue name which will have the coordinates. This queue must subscribe to the topic below.
+- `coordinateDurabeTopicName`: Solace topic where the coordinates will be published.
 
--   This app has been generated using the SAP Fiori tools - App Generator, as part of the SAP Fiori tools suite.  In order to launch the generated app, simply run the following from the generated app root folder:
+### Configure Solace event broker:
+- Create a solace event broker.
+- Create queues for weather and coordinates. The request messages will be sent to the coordinates and the response message will be received in weather.
+- Create a topic for publishing the coordinates.
+- Subscribe the topic with the coordinates queue.
 
-```
-    npm start
-```
+Build the application:
+`npm run build`
 
-#### Pre-requisites:
-
-1. Active NodeJS LTS (Long Term Support) version and associated supported NPM version.  (See https://nodejs.org)
-
-
+Run the application:
+`npn run start-noflp`
