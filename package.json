@@ -1,0 +1,43 @@
+{
+  "name": "sap-aem-demo",
+  "version": "0.0.1",
+  "description": "SAP AEM Test App",
+  "keywords": [
+    "ui5",
+    "openui5",
+    "sapui5"
+  ],
+  "main": "webapp/index.html",
+  "dependencies": {
+    "solclientjs": "^10.17.1",
+    "ui5-middleware-cfdestination": "^3.3.11",
+    "ui5-tooling-modules": "^3.24.6",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "@sap-ux/eslint-plugin-fiori-tools": "^0.4.0",
+    "@sap/ux-ui5-tooling": "1",
+    "@sapui5/types": "~1.133.0",
+    "@typescript-eslint/eslint-plugin": "^7.1.1",
+    "@typescript-eslint/parser": "^7.1.1",
+    "@ui5/cli": "^3.0.0",
+    "typescript": "^5.1.6",
+    "ui5-tooling-transpile": "^3.3.7"
+  },
+  "scripts": {
+    "start": "fiori run --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#comsapaemsapaemdemo-display\"",
+    "start-local": "fiori run --config ./ui5-local.yaml --open \"test/flpSandbox.html?sap-ui-xx-viewCache=false#comsapaemsapaemdemo-display\"",
+    "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist",
+    "lint": "eslint ./",
+    "ts-typecheck": "tsc --noEmit",
+    "prestart": "npm run ts-typecheck",
+    "prebuild": "npm run ts-typecheck",
+    "deploy": "fiori verify",
+    "deploy-config": "fiori add deploy-config",
+    "start-noflp": "fiori run --open \"index.html?sap-ui-xx-viewCache=false\"",
+    "start-variants-management": "fiori run --open \"preview.html?sap-ui-xx-viewCache=false&fiori-tools-rta-mode=true&sap-ui-rta-skip-flex-validation=true#preview-app\"",
+    "unit-tests": "fiori run --open 'test/unit/unitTests.qunit.html'",
+    "int-tests": "fiori run --open 'test/integration/opaTests.qunit.html'"
+  },
+  "sapuxLayer": "CUSTOMER_BASE"
+}

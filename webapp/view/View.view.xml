@@ -1,0 +1,73 @@
+<mvc:View controllerName="com.sap.aem.sapaemdemo.controller.View"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:vbm="sap.ui.vbm"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <FlexBox height="80%" class="sapUiTinyMargin" width="auto" direction="Column">
+            <FlexBox alignItems="Center">
+                <Label text="Direct Messaging Req/Rep" design="Bold" />
+                <Switch id="method" state="false" change=".changePersistence" />
+                <layoutData>
+                    <FlexItemData baseSize="10%" maxHeight="10%" />
+                </layoutData>
+            </FlexBox>
+            <FlexBox>
+                <vbm:GeoMap id="map" width="100%" height="100%" click=".sendCoordinate">
+                    <vbm:layoutData>
+                        <FlexItemData baseSize="60%" />
+                    </vbm:layoutData>
+                </vbm:GeoMap>
+                <ScrollContainer
+                    height="100%"
+                    width="100%"
+                    vertical="true"
+                    focusable="true">
+                    <Table id="weather" inset="false" items="{model:'local',path:'local>/'}"
+                        growing="true"
+                        growingThreshold="50" class="sapUiTinyMarginBegin" width="auto"
+                        alternateRowColors="true" sticky="ColumnHeaders">
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <Title text="World Weather in ° C" />
+                                <ToolbarSpacer />
+                                <Button text="Clear Weather" icon="sap-icon://delete"
+                                    press=".clearWeather" type="Emphasized" />
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column>
+                                <Text text="Longitude" />
+                            </Column>
+                            <Column>
+                                <Text text="Latitude" />
+                            </Column>
+                            <Column>
+                                <Text text="Avg. Temp." />
+                            </Column>
+                            <Column>
+                                <Text text="Weather" />
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="{local>longitude}" />
+                                    <Text text="{local>latitude}" />
+                                    <Text text="{local>temperature}" />
+                                    <Image src="{local>weather}" />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                    <layoutData>
+                        <FlexItemData baseSize="40%" />
+                    </layoutData>
+                </ScrollContainer>
+                <layoutData>
+                    <FlexItemData baseSize="90%" maxHeight="90%" />
+                </layoutData>
+            </FlexBox>
+        </FlexBox>
+    </Page>
+</mvc:View>
