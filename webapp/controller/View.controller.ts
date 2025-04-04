@@ -63,12 +63,6 @@ export default class View extends Controller {
         }
         this.changePersistence()
     }
-    public connectDisconnet(event: Event): void {
-        //@ts-ignore
-        if (event.getParameter('pressed')) {
-
-        }
-    }
     public changePersistence(): void {
         if ((this.byId('method') as Switch).getState()) {
             //Unsubscribe from direct session.
